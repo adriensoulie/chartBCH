@@ -1,15 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { RootState, AppThunk } from '../../app/store';
 import { fetchCount } from './counterAPI';
 
 export interface CounterState {
   value: number;
   status: 'idle' | 'loading' | 'failed';
+  data: [];
 }
 
 const initialState: CounterState = {
   value: 0,
   status: 'idle',
+  data: [],
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -25,6 +28,7 @@ export const incrementAsync = createAsyncThunk(
     return response.data;
   }
 );
+
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -63,7 +67,7 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, } = counterSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
