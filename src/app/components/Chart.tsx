@@ -25,10 +25,6 @@ export default function Chart() {
   const lastWeek = chart.slice(chart.length - 7, chart.length);
   const lastMonth = chart.slice(chart.length - 31, chart.length);
 
-  // fetch(`https://news.bitcoin.com/wp-content/weekly_popular_posts.json`)
-  //   .then((res) => res.json())
-  //   .then((res) => console.log(res));
-
   useEffect(() => {
     dispatch(fetchChart());
   }, []);

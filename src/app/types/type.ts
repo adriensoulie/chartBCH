@@ -13,3 +13,8 @@ export type News = {
 }
   
 export type ChartRaw = [time: string, price: number]
+
+export type SpotPrice = { 
+    price: number,
+    stamp: number,
+}

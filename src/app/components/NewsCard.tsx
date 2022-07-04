@@ -5,14 +5,14 @@ interface NewsProps {
 }
 
 export default function NewsCard(props: NewsProps) {
+  let news = props.news;
   return (
     <div>
-      NewsCard
-      <p>{props.news.title}</p>
-      <a href={props.news.href}>
-        <img src={props.news.thumbnail} width={150} height={150} />
+      <p>{news.title}</p>
+      <a href={news.href}>
+        <img src={news.thumbnail} width={150} height={150} />
       </a>
-      <p>{props.news.publish_date}</p>
+      <p>{news.publish_date}</p>
     </div>
   );
 }
