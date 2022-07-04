@@ -22,17 +22,27 @@ export const fetchChart = createAsyncThunk(
     );
     const data: ChartRaw[] = await response.json();
 
+    function dateFormat(date: string) {
+      let year = date.slice(0, 4);
+      let month = date.slice(5, 7);
+      let day = date.slice(8, 10);
+      let newDate = day + "/" + month + "/" + year;
+      return newDate;
+    }
+
     let chartOrdered:ChartOrdered[] = [];
 
       data.map((chart) => {
         let newChartObject = {
-          date: chart[0],
+          date: dateFormat(chart[0]),
           value: chart[1],
         };
         chartOrdered.push(newChartObject);
       });
+    
+    let chart = chartOrdered.reverse()
 
-    return chartOrdered;
+    return chart;
   }
 );
 

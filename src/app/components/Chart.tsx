@@ -11,6 +11,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Area,
   Legend,
   AreaChart,
   ResponsiveContainer,
@@ -40,17 +41,30 @@ export default function Chart() {
       Chart
       {chart && (
         <div>
-          <LineChart width={900} height={200} data={chartData[chartPeriod]}>
-            <Line
+          <AreaChart
+            width={900}
+            height={400}
+            data={chartData[chartPeriod]}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Area
               type="monotone"
               dataKey="value"
-              stroke="#8884d8"
-              strokeWidth={2}
+              stroke="rgb(21, 128, 61)"
+              fill="rgb(21, 128, 61)"
             />
-          </LineChart>
-          <button onClick={() => setChartPeriod("day")}>24 hours</button>
-          <button onClick={() => setChartPeriod("week")}>7 days</button>
-          <button onClick={() => setChartPeriod("month")}>30 days</button>
+          </AreaChart>
+          <button onClick={() => setChartPeriod("day")}>1D</button>
+          <button onClick={() => setChartPeriod("week")}>7D</button>
+          <button onClick={() => setChartPeriod("month")}>1M</button>
         </div>
       )}
     </div>
