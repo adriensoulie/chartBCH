@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import { ChartRaw, ChartOrdered } from '../../app/types/type';
 
 export interface chartState {
   value: number;
@@ -7,14 +8,6 @@ export interface chartState {
   data: ChartOrdered[];
   error: string | null
 }   
-
-type ChartOrdered = {
-    date: string,
-    value: number
-}
-
-type ChartRaw = [time: string, price: number]
-
 
 const initialState: chartState = {
   value: 0,

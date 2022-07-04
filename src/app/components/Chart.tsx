@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchChart } from "../../features/chart/chartSlice";
 import { AppDispatch } from "../store";
@@ -12,77 +12,47 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  AreaChart,
   ResponsiveContainer,
 } from "recharts";
+import { ChartOrdered } from "../types/type";
 
 export default function Chart() {
   const dispatch = useDispatch<AppDispatch>();
   const chart = useAppSelector(selectChart);
+  const [chartPeriod, setChartPeriod] = useState("month");
+  const lastDay = chart.slice(chart.length - 1, chart.length);
+  const lastWeek = chart.slice(chart.length - 7, chart.length);
+  const lastMonth = chart.slice(chart.length - 31, chart.length);
+
   useEffect(() => {
     dispatch(fetchChart());
   }, []);
-  console.log("chart", chart);
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+
+  const chartData: Record<string, ChartOrdered[]> = {
+    day: lastDay,
+    week: lastWeek,
+    month: lastMonth,
+  };
 
   return (
     <div>
       Chart
-      {/* {chart.map((chart) => {
-        return <p>{chart[1]}</p>;
-      })} */}
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart width={300} height={100} data={chart}>
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#8884d8"
-            strokeWidth={2}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      {chart && (
+        <div>
+          <LineChart width={900} height={200} data={chartData[chartPeriod]}>
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="#8884d8"
+              strokeWidth={2}
+            />
+          </LineChart>
+          <button onClick={() => setChartPeriod("day")}>24 hours</button>
+          <button onClick={() => setChartPeriod("week")}>7 days</button>
+          <button onClick={() => setChartPeriod("month")}>30 days</button>
+        </div>
+      )}
     </div>
   );
 }
