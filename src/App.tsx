@@ -1,11 +1,11 @@
-import { Counter } from "./features/counter/Counter";
 import Chart from "./app/components/Chart";
+import NewsContainer from "./app/components/NewsContainer";
 
 function App() {
   return (
     <div>
-      {/* <Counter /> */}
       <Chart />
+      <NewsContainer />
     </div>
   );
 }
