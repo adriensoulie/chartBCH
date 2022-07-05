@@ -24,7 +24,7 @@ const Wrapper = styled.section`
 const Title = styled.h1`
   font-size: 36px;
   font-weight: bold;
-  color: #3861fb;
+  color: black;
 `;
 
 const ChartContainer = styled.div`
