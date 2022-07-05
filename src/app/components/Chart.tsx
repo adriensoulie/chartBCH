@@ -55,6 +55,18 @@ export default function Chart() {
     dispatch(fetchChart());
   }, []);
 
+  function getMaxPrice(array: ChartOrdered[]) {
+    let price: number[] = [];
+    array.map((item) => price.push(item.value));
+    return Math.max(...price);
+  }
+
+  function getMinPrice(array: ChartOrdered[]) {
+    let price: number[] = [];
+    array.map((item) => price.push(item.value));
+    return Math.min(...price);
+  }
+
   const chartData: Record<string, ChartOrdered[]> = {
     day: lastDay,
     week: lastWeek,
@@ -77,7 +89,13 @@ export default function Chart() {
               }}
             >
               <XAxis dataKey="date" />
-              <YAxis />
+              <YAxis
+                dataKey="value"
+                domain={[
+                  getMinPrice(chartData[chartPeriod]),
+                  getMaxPrice(chartData[chartPeriod]),
+                ]}
+              />
               <Tooltip />
               <Area
                 type="monotone"
