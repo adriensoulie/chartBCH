@@ -13,7 +13,7 @@ const COLOR: Record<string, string> = {
       color: #fff;
       font-weight: bold;
       background: #3861FB;
-      border-radius: 15px;
+      border-radius: 10px;
       margin: 0px 5px;
     `,
   secondary: `
