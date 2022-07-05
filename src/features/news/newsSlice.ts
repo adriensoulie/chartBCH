@@ -40,7 +40,15 @@ export const fetchNews = createAsyncThunk(
           newsDateFormated.push(newsObject);
         });
       
-      return newsDateFormated;
+      let orderedNews = newsDateFormated.sort(function(a,b){
+        const date1 = new Date(a.publish_date)
+        const date2 = new Date(b.publish_date)
+        return date1.getTime() - date2.getTime();
+      });
+
+      let recentNews = orderedNews.reverse().slice(0,4)
+      
+      return recentNews;
     }
   );
 

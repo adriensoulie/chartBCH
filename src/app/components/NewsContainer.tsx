@@ -11,13 +11,20 @@ export default function NewsContainer() {
   const newsData = useAppSelector(selectNews);
 
   const Wrapper = styled.section`
-    padding: 12px;
+    margin: 12px;
+    padding: 20px;
+    padding-bottom: 140px;
+  `;
+
+  const Title = styled.h1`
+    font-size: 28px;
+    color: black;
   `;
 
   const NewsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
   `;
 
   useEffect(() => {
@@ -26,7 +33,7 @@ export default function NewsContainer() {
 
   return (
     <Wrapper>
-      NewsContainer
+      <Title>Recent news</Title>
       <NewsContainer>
         {newsData.map((news, index) => (
           <NewsCard key={news.publish_date + index} news={news} />

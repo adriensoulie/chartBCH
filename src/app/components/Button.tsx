@@ -10,14 +10,17 @@ export type ButtonProps = {
 
 const COLOR: Record<string, string> = {
   primary: `
+      color: #fff;
+      font-weight: bold;
+      background: #3861FB;
+      border-radius: 15px;
+      margin: 0px 5px;
+    `,
+  secondary: `
       color: black;
       font-weight: bold;
       background: #EBEDF1;
-    `,
-  secondary: `
-      color: #fff;
-      font-weight: bold;
-      background: linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248));
+      border-radius: 50px;
     `,
 };
 
@@ -25,7 +28,6 @@ const Container = styled.button`
   padding: 10px 15px;
   cursor: pointer;
   border: none;
-  border-radius: 50px;
   font-weight: 500;
   outline: none;
   transition: all 0.2s;

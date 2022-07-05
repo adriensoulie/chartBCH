@@ -6,6 +6,25 @@ import {
 } from "../../features/spot/spotSlice";
 import { useAppSelector } from "../hooks";
 import { AppDispatch } from "../store";
+import styled from "styled-components";
+
+const Wrapper = styled.section`
+  margin: 40px;
+  padding: 20px;
+  background-color: #f8fafd;
+  border-radius: 20px;
+`;
+
+const Title = styled.h1`
+  font-size: 28px;
+  font-weight: normal;
+  color: black;
+`;
+
+const Price = styled.span`
+  color: #3861fb;
+  font-weight: bold;
+`;
 
 export default function SpotPrice() {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,8 +35,10 @@ export default function SpotPrice() {
   }, []);
 
   return (
-    <div>
-      <p>Current Price of BCH: {currentSpotPrice?.price}</p>
-    </div>
+    <Wrapper>
+      <Title>
+        BCH: <Price>${currentSpotPrice?.price}</Price>
+      </Title>
+    </Wrapper>
   );
 }

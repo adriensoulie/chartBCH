@@ -12,7 +12,6 @@ const Title = styled.h1`
 `;
 
 const Wrapper = styled.section`
-  margin: 12px;
   padding: 20px;
   width: 300px;
   background-color: white;
@@ -38,7 +37,7 @@ export default function NewsCard(props: NewsProps) {
         <Title>{news.title}</Title>
         <img src={news.thumbnail} width={300} height="auto" />
         <Date>Published the {news.publish_date}</Date>
-        <Button color="primary">Read more</Button>
+        <Button color="secondary">Read more</Button>
       </Anchor>
     </Wrapper>
   );

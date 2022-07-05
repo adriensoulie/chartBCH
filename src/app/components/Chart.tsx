@@ -5,18 +5,43 @@ import { AppDispatch } from "../store";
 import { useAppSelector } from "../hooks";
 import { selectChart } from "../../features/chart/chartSlice";
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   Area,
-  Legend,
   AreaChart,
   ResponsiveContainer,
 } from "recharts";
 import { ChartOrdered } from "../types/type";
+import { Button } from "./Button";
+import styled from "styled-components";
+
+const Wrapper = styled.section`
+  margin: 12px;
+  padding: 20px;
+`;
+
+const Title = styled.h1`
+  font-size: 36px;
+  font-weight: bold;
+  color: #3861fb;
+`;
+
+const ChartContainer = styled.div`
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 20px;
+  padding: 6px;
+  border-radius: 10px;
+  background: #f8f8ff;
+  display: flex;
+  max-width: fit-content;
+`;
 
 export default function Chart() {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,36 +62,38 @@ export default function Chart() {
   };
 
   return (
-    <div>
-      Chart
+    <Wrapper>
+      <Title>Price of Bitcoin Cash (BCH)</Title>
       {chart && (
-        <div>
-          <AreaChart
-            width={900}
-            height={400}
-            data={chartData[chartPeriod]}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke="rgb(21, 128, 61)"
-              fill="rgb(21, 128, 61)"
-            />
-          </AreaChart>
-          <button onClick={() => setChartPeriod("day")}>1D</button>
-          <button onClick={() => setChartPeriod("week")}>7D</button>
-          <button onClick={() => setChartPeriod("month")}>1M</button>
-        </div>
+        <ChartContainer>
+          <ResponsiveContainer width="100%" height={400}>
+            <AreaChart
+              data={chartData[chartPeriod]}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <XAxis dataKey="date" />
+              <YAxis />
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="value"
+                stroke="#3861FB"
+                fill="#3861FB"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+          <ButtonContainer>
+            <Button onClick={() => setChartPeriod("day")}>1D</Button>
+            <Button onClick={() => setChartPeriod("week")}>7D</Button>
+            <Button onClick={() => setChartPeriod("month")}>1M</Button>
+          </ButtonContainer>
+        </ChartContainer>
       )}
-    </div>
+    </Wrapper>
   );
 }
