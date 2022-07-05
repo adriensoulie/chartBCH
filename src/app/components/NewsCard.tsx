@@ -31,6 +31,7 @@ const Anchor = styled.a`
 
 export default function NewsCard(props: NewsProps) {
   let news = props.news;
+
   return (
     <Wrapper>
       <Anchor href={news.href}>

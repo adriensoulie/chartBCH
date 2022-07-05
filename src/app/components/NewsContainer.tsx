@@ -6,26 +6,26 @@ import { AppDispatch } from "../store";
 import NewsCard from "./NewsCard";
 import styled from "styled-components";
 
+const Wrapper = styled.section`
+  margin: 12px;
+  padding: 20px;
+  padding-bottom: 140px;
+`;
+
+const Title = styled.h1`
+  font-size: 28px;
+  color: black;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+`;
+
 export default function NewsContainer() {
   const dispatch = useDispatch<AppDispatch>();
   const newsData = useAppSelector(selectNews);
-
-  const Wrapper = styled.section`
-    margin: 12px;
-    padding: 20px;
-    padding-bottom: 140px;
-  `;
-
-  const Title = styled.h1`
-    font-size: 28px;
-    color: black;
-  `;
-
-  const NewsContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-  `;
 
   useEffect(() => {
     dispatch(fetchNews());
@@ -34,11 +34,11 @@ export default function NewsContainer() {
   return (
     <Wrapper>
       <Title>Recent news</Title>
-      <NewsContainer>
+      <Container>
         {newsData.map((news, index) => (
           <NewsCard key={news.publish_date + index} news={news} />
         ))}
-      </NewsContainer>
+      </Container>
     </Wrapper>
   );
 }
