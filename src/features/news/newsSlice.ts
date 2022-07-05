@@ -29,10 +29,16 @@ export const fetchNews = createAsyncThunk(
         let newDate = day + "/" + month + "/" + year;
         return newDate;
       }
+
+      let orderedNews = data.sort(function(a,b){
+        const date1 = new Date(a.publish_date)
+        const date2 = new Date(b.publish_date)
+        return date1.getTime() - date2.getTime();
+      });
   
       let newsDateFormated:News[] = [];
   
-        data.map((chart) => {
+        orderedNews.map((chart) => {
           let newsObject = {
             ...chart,
             publish_date: dateFormat(chart.publish_date),
@@ -40,13 +46,8 @@ export const fetchNews = createAsyncThunk(
           newsDateFormated.push(newsObject);
         });
       
-      let orderedNews = newsDateFormated.sort(function(a,b){
-        const date1 = new Date(a.publish_date)
-        const date2 = new Date(b.publish_date)
-        return date1.getTime() - date2.getTime();
-      });
 
-      let recentNews = orderedNews.reverse().slice(0,4)
+      let recentNews = newsDateFormated.reverse().slice(0,4)
       
       return recentNews;
     }
