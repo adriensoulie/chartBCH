@@ -21,7 +21,26 @@ export const fetchNews = createAsyncThunk(
         `https://news.bitcoin.com/wp-content/weekly_popular_posts.json`
       );
       const data: News[] = await response.json();
-      return data;
+
+      function dateFormat(date: string) {
+        let year = date.slice(0, 4);
+        let month = date.slice(5, 7);
+        let day = date.slice(8, 10);
+        let newDate = day + "/" + month + "/" + year;
+        return newDate;
+      }
+  
+      let newsDateFormated:News[] = [];
+  
+        data.map((chart) => {
+          let newsObject = {
+            ...chart,
+            publish_date: dateFormat(chart.publish_date),
+          };
+          newsDateFormated.push(newsObject);
+        });
+      
+      return newsDateFormated;
     }
   );
 
