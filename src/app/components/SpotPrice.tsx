@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {
   fetchCurrentSpotPrice,
   selectSpotPrice,
-} from "../../features/spot/spotSlice";
+} from "../reducers/spot/spotSlice";
 import { useAppSelector } from "../hooks";
 import { AppDispatch } from "../store";
 import styled from "styled-components";
@@ -37,7 +37,7 @@ export default function SpotPrice() {
   return (
     <Wrapper>
       <Title>
-        BCH: <Price>${currentSpotPrice?.price}</Price>
+        Current price of BCH: <Price>${currentSpotPrice?.price}</Price>
       </Title>
     </Wrapper>
   );

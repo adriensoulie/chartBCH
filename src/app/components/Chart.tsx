@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchChart } from "../../features/chart/chartSlice";
+import { fetchChart } from "../reducers/chart/chartSlice";
 import { AppDispatch } from "../store";
 import { useAppSelector } from "../hooks";
-import { selectChart } from "../../features/chart/chartSlice";
+import { selectChart } from "../reducers/chart/chartSlice";
 import {
   XAxis,
   YAxis,

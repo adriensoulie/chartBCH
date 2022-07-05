@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { SpotPrice } from '../../app/types/type';
+import { RootState } from '../../store';
+import { SpotPrice } from '../../types/type';
 
 export interface spotState {
   status: 'idle' | 'loading' | 'failed';

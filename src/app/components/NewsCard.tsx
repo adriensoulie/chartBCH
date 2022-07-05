@@ -9,6 +9,7 @@ interface NewsProps {
 const Title = styled.h1`
   font-size: 16px;
   color: black;
+  text-overflow: ellipsis;
 `;
 
 const Wrapper = styled.section`
@@ -36,7 +37,7 @@ export default function NewsCard(props: NewsProps) {
     <Wrapper>
       <Anchor href={news.href}>
         <Title>{news.title}</Title>
-        <img src={news.thumbnail} width={300} height="auto" />
+        <img src={news.thumbnail} alt={news.title} width={300} height="auto" />
         <Date>Published the {news.publish_date}</Date>
         <Button color="secondary">Read more</Button>
       </Anchor>

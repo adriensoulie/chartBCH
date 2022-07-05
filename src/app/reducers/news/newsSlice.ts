@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { News } from '../../app/types/type';
+import { RootState } from '../../store';
+import { News } from '../../types/type';
 
 export interface newsState {
   status: 'idle' | 'loading' | 'failed';

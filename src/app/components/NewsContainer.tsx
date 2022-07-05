@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchNews, selectNews } from "../../features/news/newsSlice";
+import { fetchNews, selectNews } from "../reducers/news/newsSlice";
 import { useAppSelector } from "../hooks";
 import { AppDispatch } from "../store";
 import NewsCard from "./NewsCard";
@@ -29,7 +29,7 @@ export default function NewsContainer() {
 
   useEffect(() => {
     dispatch(fetchNews());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Wrapper>

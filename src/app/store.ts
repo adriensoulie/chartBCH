@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import chartReducer from '../features/chart/chartSlice'
-import newsReducer  from '../features/news/newsSlice'
-import spotReducer from '../features/spot/spotSlice';
+import chartReducer from './reducers/chart/chartSlice'
+import newsReducer  from './reducers/news/newsSlice'
+import spotReducer from './reducers/spot/spotSlice';
 
 export const store = configureStore({
   reducer: {
