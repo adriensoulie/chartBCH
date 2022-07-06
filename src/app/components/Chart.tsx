@@ -106,9 +106,24 @@ export default function Chart() {
             </AreaChart>
           </ResponsiveContainer>
           <ButtonContainer>
-            <Button onClick={() => setChartPeriod("day")}>1D</Button>
-            <Button onClick={() => setChartPeriod("week")}>7D</Button>
-            <Button onClick={() => setChartPeriod("month")}>1M</Button>
+            <Button
+              color={chartPeriod === "day" ? "active" : "primary"}
+              onClick={() => setChartPeriod("day")}
+            >
+              1D
+            </Button>
+            <Button
+              color={chartPeriod === "week" ? "active" : "primary"}
+              onClick={() => setChartPeriod("week")}
+            >
+              7D
+            </Button>
+            <Button
+              color={chartPeriod === "month" ? "active" : "primary"}
+              onClick={() => setChartPeriod("month")}
+            >
+              1M
+            </Button>
           </ButtonContainer>
         </ChartContainer>
       )}

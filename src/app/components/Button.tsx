@@ -4,7 +4,7 @@ import styled from "styled-components";
 export type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
-  color?: "primary" | "secondary";
+  color?: "primary" | "active" | "secondary";
   disabled?: boolean;
 };
 
@@ -15,7 +15,18 @@ const COLOR: Record<string, string> = {
       background: #3861FB;
       border-radius: 10px;
       margin: 0px 5px;
+      border-style: solid;
+      border-color: #3861FB;
     `,
+  active: `
+    border-style: solid;
+    border-color: #3861FB;
+    color: #3861FB;
+    font-weight: bold;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0px 5px;
+  `,
   secondary: `
       color: black;
       font-weight: bold;
